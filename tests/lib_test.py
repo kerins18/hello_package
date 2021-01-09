@@ -1,19 +1,13 @@
 # -*- coding: UTF-8 -*-
 
 # Import from standard library
-import os
-import second_package
-import pandas as pd
-# Import from our lib
-from second_package.lib import clean_data
-import pytest
+from second_package.lib import hello
 
 
-def test_clean_data():
-    datapath = os.path.dirname(os.path.abspath(second_package.__file__)) + '/data'
-    df = pd.read_csv('{}/data.csv.gz'.format(datapath))
-    first_cols = ['id', 'civility', 'birthdate', 'city', 'postal_code', 'vote_1']
-    assert list(df.columns)[:6] == first_cols
-    assert df.shape == (999, 142)
-    out = clean_data(df)
-    assert out.shape == (985, 119)
+
+def test_hello():
+
+    assert hello('Ian') == 'Hello Ian'
+    assert hello('') == 'Hello '
+    assert hello(0) == 'Hello 0'
+
